@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Menu, X, User } from 'lucide-react';
 import ProfileDropdown from './ProfileDropdown';
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem
+} from './ui/dropdown-menu';
 
 const Navbar = () => {
     const { user } = useAuth();
@@ -26,9 +32,28 @@ const Navbar = () => {
                         <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                             Home
                         </Link>
-                        <Link to="/features" className="text-gray-300 hover:text-white transition-colors">
-                            Features
-                        </Link>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <button className="text-gray-300 hover:text-white transition-colors flex items-center space-x-1 focus:outline-none">
+                                    <span>Features</span>
+                                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent sideOffset={8} className="min-w-[200px]">
+                                <DropdownMenuItem asChild>
+                                    <Link to="/features/upload">Upload Excel</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link to="/features/charts">Generate Charts</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link to="/features/history">Analysis History</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link to="/features/ai-insights">AI Insights</Link>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                         <Link to="/pricing" className="text-gray-300 hover:text-white transition-colors">
                             Pricing
                         </Link>
@@ -37,15 +62,6 @@ const Navbar = () => {
                         </Link>
                         {user ? (
                             <>
-                                <Link to="/features/upload" className="text-gray-300 hover:text-white transition-colors">
-                                    Upload
-                                </Link>
-                                <Link to="/features/charts" className="text-gray-300 hover:text-white transition-colors">
-                                    Charts
-                                </Link>
-                                <Link to="/features/history" className="text-gray-300 hover:text-white transition-colors">
-                                    History
-                                </Link>
                                 {user.role === 'admin' && (
                                     <Link to="/admin" className="text-gray-300 hover:text-white transition-colors">
                                         Admin
@@ -105,13 +121,20 @@ const Navbar = () => {
                         >
                             Home
                         </Link>
-                        <Link
-                            to="/features"
-                            className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            Features
-                        </Link>
+                        <div className="block px-3 py-2">
+                            <details className="group">
+                                <summary className="text-gray-300 hover:text-white transition-colors cursor-pointer flex items-center justify-between">
+                                    <span>Features</span>
+                                    <svg className="w-4 h-4 ml-1 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                </summary>
+                                <div className="pl-4 mt-2 space-y-2">
+                                    <Link to="/features/upload" className="block text-gray-300 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>Upload Excel</Link>
+                                    <Link to="/features/charts" className="block text-gray-300 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>Generate Charts</Link>
+                                    <Link to="/features/history" className="block text-gray-300 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>Analysis History</Link>
+                                    <Link to="/features/ai-insights" className="block text-gray-300 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>AI Insights</Link>
+                                </div>
+                            </details>
+                        </div>
                         <Link
                             to="/pricing"
                             className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
@@ -128,27 +151,6 @@ const Navbar = () => {
                         </Link>
                         {user ? (
                             <>
-                                <Link
-                                    to="/features/upload"
-                                    className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Upload
-                                </Link>
-                                <Link
-                                    to="/features/charts"
-                                    className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Charts
-                                </Link>
-                                <Link
-                                    to="/features/history"
-                                    className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    History
-                                </Link>
                                 {user.role === 'admin' && (
                                     <Link
                                         to="/admin"

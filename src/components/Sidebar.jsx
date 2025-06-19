@@ -22,26 +22,6 @@ const navItems = [
         icon: LayoutDashboard,
     },
     {
-        title: 'Upload Excel',
-        href: '/upload',
-        icon: Upload,
-    },
-    {
-        title: 'Generate Charts',
-        href: '/charts',
-        icon: BarChart3,
-    },
-    {
-        title: 'History',
-        href: '/history',
-        icon: History,
-    },
-    {
-        title: 'AI Insights',
-        href: '/ai-insights',
-        icon: Brain,
-    },
-    {
         title: 'Reports',
         href: '/reports',
         icon: FileText,
