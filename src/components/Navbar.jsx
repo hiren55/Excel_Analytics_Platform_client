@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, User, Upload, BarChart3, History, Brain } from 'lucide-react';
 import ProfileDropdown from './ProfileDropdown';
 import {
     DropdownMenu,
@@ -39,18 +39,42 @@ const Navbar = () => {
                                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent sideOffset={8} className="min-w-[200px]">
-                                <DropdownMenuItem asChild>
-                                    <Link to="/features/upload">Upload Excel</Link>
+                            <DropdownMenuContent sideOffset={8} className="min-w-[340px] p-4 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 bg-white shadow-2xl rounded-xl border border-gray-200">
+                                <DropdownMenuItem asChild className="flex items-start space-x-3 p-3 rounded-lg hover:bg-purple-50 transition cursor-pointer group">
+                                    <Link to="/features/upload" className="flex items-start space-x-3 w-full">
+                                        <Upload className="h-7 w-7 text-purple-600 group-hover:text-purple-800 mt-1" />
+                                        <div>
+                                            <div className="font-semibold text-base text-gray-900 group-hover:text-purple-800">Upload Excel</div>
+                                            <div className="text-xs text-gray-500 group-hover:text-purple-700">Upload your Excel files and get instant insights.</div>
+                                        </div>
+                                    </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link to="/features/charts">Generate Charts</Link>
+                                <DropdownMenuItem asChild className="flex items-start space-x-3 p-3 rounded-lg hover:bg-blue-50 transition cursor-pointer group">
+                                    <Link to="/features/charts" className="flex items-start space-x-3 w-full">
+                                        <BarChart3 className="h-7 w-7 text-blue-600 group-hover:text-blue-800 mt-1" />
+                                        <div>
+                                            <div className="font-semibold text-base text-gray-900 group-hover:text-blue-800">Generate Charts</div>
+                                            <div className="text-xs text-gray-500 group-hover:text-blue-700">Create beautiful, interactive charts from your data.</div>
+                                        </div>
+                                    </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link to="/features/history">Analysis History</Link>
+                                <DropdownMenuItem asChild className="flex items-start space-x-3 p-3 rounded-lg hover:bg-green-50 transition cursor-pointer group">
+                                    <Link to="/features/history" className="flex items-start space-x-3 w-full">
+                                        <History className="h-7 w-7 text-green-600 group-hover:text-green-800 mt-1" />
+                                        <div>
+                                            <div className="font-semibold text-base text-gray-900 group-hover:text-green-800">Analysis History</div>
+                                            <div className="text-xs text-gray-500 group-hover:text-green-700">Track and manage your past analyses.</div>
+                                        </div>
+                                    </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link to="/features/ai-insights">AI Insights</Link>
+                                <DropdownMenuItem asChild className="flex items-start space-x-3 p-3 rounded-lg hover:bg-pink-50 transition cursor-pointer group">
+                                    <Link to="/features/ai-insights" className="flex items-start space-x-3 w-full">
+                                        <Brain className="h-7 w-7 text-pink-600 group-hover:text-pink-800 mt-1" />
+                                        <div>
+                                            <div className="font-semibold text-base text-gray-900 group-hover:text-pink-800">AI Insights</div>
+                                            <div className="text-xs text-gray-500 group-hover:text-pink-700">Get smart recommendations powered by AI.</div>
+                                        </div>
+                                    </Link>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
